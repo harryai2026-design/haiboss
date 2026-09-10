@@ -1,5 +1,5 @@
 function shell(content){
-  document.getElementById('app').innerHTML=`<nav class="nav"><div class="wrap navin"><a class="logo" href="index.html">海老板<i>·</i></a><div class="links"><a href="pain-points.html">痛点</a><a href="ai-growth.html">AI 增效</a><a href="solutions.html">服务场景</a><a href="about.html">关于</a><a class="call" href="tel:18805065692">联系海老板</a></div></div></nav>${content}<footer class="footer"><div class="wrap">海老板 · AI 外贸增效服务</div></footer>`;
+  document.getElementById('app').innerHTML=`<nav class="nav"><div class="wrap navin"><a class="logo" href="index.html">海老板<i>·</i></a><div class="links"><a href="pain-points.html">痛点</a><a href="ai-growth.html">AI 增效</a><a href="solutions.html">服务场景</a><a href="about.html">关于</a><a class="call" href="contact.html">联系海老板</a></div></div></nav>${content}<footer class="footer"><div class="wrap">海老板 · AI 外贸增效服务</div></footer>`;
 }
 
 function renderPage(title,sub,kind,items){
