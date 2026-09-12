@@ -31,5 +31,10 @@ function renderContact(){
   shell(`<main><section class="hero"><div class="wrap"><div class="kicker">TALK TO HAIBOSS</div><h1>聊聊你的外贸增长问题。</h1><p>如果你正在面对客户难找、效率不高、团队经验难沉淀等问题，可以直接联系海老板。</p><a class="phone" href="tel:18805065692">188 0506 5692</a><br><a class="btn" href="tel:18805065692">电话联系海老板 ↗</a></div></section></main>`);
 }
 
+function renderContact(){
+  document.body.dataset.page='contact';
+  shell(`<main><section class="hero"><div class="wrap"><div class="kicker">TALK TO HAIBOSS</div><h1>聊聊你的外贸增长问题。</h1><p>如果你正在面对客户难找、效率不高、团队经验难沉淀等问题，可以直接联系海老板。</p><a class="phone" href="tel:18805065692">188 0506 5692</a><br><a class="btn" href="tel:18805065692">电话联系海老板 ↗</a></div></section><section class="section contact-panel"><div class="wrap contact-grid"><div><div class="kicker">WECHAT / EMAIL</div><h2 class="title">把问题发过来，<br>我们一起拆解。</h2><p class="desc">微信扫码添加，或发送邮件至 sales@haiboss.top。</p><a class="email-link" href="mailto:sales@haiboss.top">sales@haiboss.top ↗</a></div><div class="wechat-card"><img src="assets/wechat-contact-card.png" alt="微信二维码与企业邮箱 sales@haiboss.top"><p>微信扫码添加 · 商务咨询</p></div></div></section></main>`);
+}
+
 document.addEventListener('DOMContentLoaded',()=>{const current=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.links a').forEach(a=>{if(a.getAttribute('href')===current)a.classList.add('active')});});
 
