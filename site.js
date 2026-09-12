@@ -4,7 +4,7 @@ function shell(content){
 
 function renderPage(title,sub,kind,items){
   document.body.dataset.page=kind;
-  const art=kind==='growth'?'assets/growth-signal-flow.png':null;
+  const art=kind==='growth'?'assets/growth-signal-flow.webp':null;
   shell(`<main><section class="hero"><div class="wrap"><div class="kicker">${kind.toUpperCase()} / HAIBOSS</div><h1>${title}</h1><p>${sub}</p></div></section>${art?`<section class="wrap page-art-wrap"><img class="page-art" src="${art}" alt="${title}视觉插图"></section>`:''}<section class="wrap grid">${items.map(x=>`<article class="card"><b>${x[0]}</b><h2>${x[1]||x[0]}</h2><p>${x[2]||x[1]}</p></article>`).join('')}</section></main>`);
 }
 
@@ -23,7 +23,7 @@ function renderCases(){
     ['E / 网红 KOL 深度合作','借力海外意见领袖放大品牌声量','围绕 Fitness、Wellness、Biohacking、Healthy Living 等内容方向筛选合作对象。','KOL 内容合作','每个方向 2 条深度内容'],
     ['F / 平台国际站运营','专业运营，持续优化增长','以数据复盘、内容资产和产品素材为基础，持续优化平台表现和询盘承接。','平台运营','类目排名目标']
   ];
-  shell(`<main><section class="hero cases-hero"><div class="wrap"><div class="kicker">ANNUAL CLIENT PLAN / HAIBOSS</div><h1>一家客户的<br><span>年度出海增长方案。</span></h1><p>这是面向一家 B2B 技术型 OEM / ODM 企业的综合服务示范：从独立站、社媒矩阵到大客户开发，建立一套持续增长的海外触达系统。</p></div></section><section class="wrap case-feature"><img src="assets/case-client-annual-plan.png" alt="匿名客户年度出海增长服务方案总览"><div><div class="kicker">CLIENT PROFILE / ANONYMOUS</div><h2>从“有产品”，到“有一套增长系统”。</h2><p>客户拥有技术型产品与制造能力，但需要把现有业务、品牌零售、海外内容、精准开发和平台运营连接起来。海老板以 12 个月为周期，分阶段建立获客、转化和沉淀机制。</p><div class="case-metrics"><span><strong>12 个月</strong>服务周期</span><span><strong>6 大模块</strong>综合服务</span></div></div></section><section class="wrap cases-intro"><div><div class="kicker">SIX SERVICE MODULES</div><h2>一份方案，<br>六个增长支点。</h2></div><p>以下内容依据附件中的单客户年度服务方案整理。页面中的数量均为方案目标或执行口径，不代表已经完成的客户结果。</p></section><section class="wrap case-grid">${modules.map((c,i)=>`<article class="case-card case-module"><div class="module-index">${String(i+1).padStart(2,'0')}</div><div class="case-body"><b>${c[0]}</b><h2>${c[1]}</h2><p>${c[2]}</p><div class="case-metrics"><span><strong>${c[3]}</strong>服务内容</span><span><strong>${c[4]}</strong>参考目标</span></div></div></article>`).join('')}</section><section class="quote"><div class="wrap"><blockquote>不是购买几个工具，而是共同搭建一套能持续运转的海外增长体系。</blockquote></div></section></main>`);
+  shell(`<main><section class="hero cases-hero"><div class="wrap"><div class="kicker">ANNUAL CLIENT PLAN / HAIBOSS</div><h1>一家客户的<br><span>年度出海增长方案。</span></h1><p>这是面向一家 B2B 技术型 OEM / ODM 企业的综合服务示范：从独立站、社媒矩阵到大客户开发，建立一套持续增长的海外触达系统。</p></div></section><section class="wrap case-feature"><img src="assets/case-client-annual-plan.webp" alt="匿名客户年度出海增长服务方案总览"><div><div class="kicker">CLIENT PROFILE / ANONYMOUS</div><h2>从“有产品”，到“有一套增长系统”。</h2><p>客户拥有技术型产品与制造能力，但需要把现有业务、品牌零售、海外内容、精准开发和平台运营连接起来。海老板以 12 个月为周期，分阶段建立获客、转化和沉淀机制。</p><div class="case-metrics"><span><strong>12 个月</strong>服务周期</span><span><strong>6 大模块</strong>综合服务</span></div></div></section><section class="wrap cases-intro"><div><div class="kicker">SIX SERVICE MODULES</div><h2>一份方案，<br>六个增长支点。</h2></div><p>以下内容依据附件中的单客户年度服务方案整理。页面中的数量均为方案目标或执行口径，不代表已经完成的客户结果。</p></section><section class="wrap case-grid">${modules.map((c,i)=>`<article class="case-card case-module"><div class="module-index">${String(i+1).padStart(2,'0')}</div><div class="case-body"><b>${c[0]}</b><h2>${c[1]}</h2><p>${c[2]}</p><div class="case-metrics"><span><strong>${c[3]}</strong>服务内容</span><span><strong>${c[4]}</strong>参考目标</span></div></div></article>`).join('')}</section><section class="quote"><div class="wrap"><blockquote>不是购买几个工具，而是共同搭建一套能持续运转的海外增长体系。</blockquote></div></section></main>`);
 }
 
 function renderContact(){
@@ -32,3 +32,4 @@ function renderContact(){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{const current=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.links a').forEach(a=>{if(a.getAttribute('href')===current)a.classList.add('active')});});
+

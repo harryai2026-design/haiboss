@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://haiboss.top/sitemap.xml
