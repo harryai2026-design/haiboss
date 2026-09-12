@@ -15,13 +15,15 @@ function renderAbout(){
 
 function renderCases(){
   document.body.dataset.page='cases';
-  const cases=[
-    ['01 / 工业设备','从有产品，到建立主动获客路径','产品与买家画像、目标市场筛选、关键人识别、个性化触达','3 个目标市场','30–50 条 / 月目标线索','assets/case-industrial.png'],
-    ['02 / 五金汽配','让标准化产品进入精准客户开发','SKU 重组、进口商与经销商搜索、客户分级、跟进沉淀','2–3 条重点产品线','P0 / P1 / P2 分级','assets/case-hardware.png'],
-    ['03 / 家居建材','从询盘响应，到持续内容与客户触达','市场机会判断、卖点整理、多语言内容、询盘优先级','8–12 条 / 月内容计划','重点询盘 24 小时内响应','assets/case-building-materials.png'],
-    ['04 / 消费品牌','从单一平台，扩展到多渠道品牌触达','客户画像、社媒信号、KOL / 经销商筛选、内容实验','20–30 家 / 月重点客户','3–5 组内容实验方向','assets/case-consumer-brand.png']
+  const modules=[
+    ['A / 独立站赛道','现有业务版块 + 品牌零售版块','梳理产品与买家画像，建立承接海外客户的品牌官网和转化路径。','独立站规划','2 条业务线'],
+    ['B / 全球社媒矩阵','高质量内容与品牌曝光','围绕目标市场持续输出内容，搭建 LinkedIn、Facebook、Instagram、YouTube 等触达阵地。','内容与渠道规划','高质量内容节奏'],
+    ['C / 私域社群建立','沉淀精准用户，形成长期资产','结合行业讨论与品牌社群，筛选高匹配用户并设计持续互动机制。','社群策略','用户沉淀目标'],
+    ['D / 大客户精准渗透','锁定高价值客户，加速业务增长','通过 Email、WhatsApp 等渠道进行精准开发，围绕客户事实完成深度触达。','大客户开发','每周 2 个目标客户'],
+    ['E / 网红 KOL 深度合作','借力海外意见领袖放大品牌声量','围绕 Fitness、Wellness、Biohacking、Healthy Living 等内容方向筛选合作对象。','KOL 内容合作','每个方向 2 条深度内容'],
+    ['F / 平台国际站运营','专业运营，持续优化增长','以数据复盘、内容资产和产品素材为基础，持续优化平台表现和询盘承接。','平台运营','类目排名目标']
   ];
-  shell(`<main><section class="hero cases-hero"><div class="wrap"><div class="kicker">CASES / HAIBOSS</div><h1>把增长方案，<br><span>落到具体行业。</span></h1><p>以下为典型行业的示范服务路径与参考指标，用来说明海老板如何把 AI 放进真实的外贸工作流。</p></div></section><section class="wrap cases-intro"><div><div class="kicker">REFERENCE PLAYBOOK</div><h2>不承诺漂亮数字，<br>只拆解可执行动作。</h2></div><p>案例中的指标为示范目标，不代表已验证客户结果。真实项目将根据产品、市场、团队和周期共同确定。</p></section><section class="wrap case-grid">${cases.map(c=>`<article class="case-card"><img src="${c[5]}" alt="${c[1]}行业视觉"><div class="case-body"><b>${c[0]}</b><h2>${c[1]}</h2><p>${c[2]}</p><div class="case-metrics"><span><strong>${c[3]}</strong>参考范围</span><span><strong>${c[4]}</strong>衡量方式</span></div></div></article>`).join('')}</section><section class="quote"><div class="wrap"><blockquote>先从一个品类、一个市场、一个具体问题开始。</blockquote></div></section></main>`);
+  shell(`<main><section class="hero cases-hero"><div class="wrap"><div class="kicker">ANNUAL CLIENT PLAN / HAIBOSS</div><h1>一家客户的<br><span>年度出海增长方案。</span></h1><p>这是面向一家 B2B 技术型 OEM / ODM 企业的综合服务示范：从独立站、社媒矩阵到大客户开发，建立一套持续增长的海外触达系统。</p></div></section><section class="wrap case-feature"><img src="assets/case-client-annual-plan.png" alt="匿名客户年度出海增长服务方案总览"><div><div class="kicker">CLIENT PROFILE / ANONYMOUS</div><h2>从“有产品”，到“有一套增长系统”。</h2><p>客户拥有技术型产品与制造能力，但需要把现有业务、品牌零售、海外内容、精准开发和平台运营连接起来。海老板以 12 个月为周期，分阶段建立获客、转化和沉淀机制。</p><div class="case-metrics"><span><strong>12 个月</strong>服务周期</span><span><strong>6 大模块</strong>综合服务</span></div></div></section><section class="wrap cases-intro"><div><div class="kicker">SIX SERVICE MODULES</div><h2>一份方案，<br>六个增长支点。</h2></div><p>以下内容依据附件中的单客户年度服务方案整理。页面中的数量均为方案目标或执行口径，不代表已经完成的客户结果。</p></section><section class="wrap case-grid">${modules.map((c,i)=>`<article class="case-card case-module"><div class="module-index">${String(i+1).padStart(2,'0')}</div><div class="case-body"><b>${c[0]}</b><h2>${c[1]}</h2><p>${c[2]}</p><div class="case-metrics"><span><strong>${c[3]}</strong>服务内容</span><span><strong>${c[4]}</strong>参考目标</span></div></div></article>`).join('')}</section><section class="quote"><div class="wrap"><blockquote>不是购买几个工具，而是共同搭建一套能持续运转的海外增长体系。</blockquote></div></section></main>`);
 }
 
 function renderContact(){
