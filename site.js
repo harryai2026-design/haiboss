@@ -8,6 +8,13 @@ function renderPage(title,sub,kind,items){
   shell(`<main><section class="hero"><div class="wrap"><div class="kicker">${kind.toUpperCase()} / HAIBOSS</div><h1>${title}</h1><p>${sub}</p></div></section>${art?`<section class="wrap page-art-wrap"><img class="page-art" src="${art}" alt="${title}视觉插图"></section>`:''}<section class="wrap grid">${items.map(x=>`<article class="card"><b>${x[0]}</b><h2>${x[1]||x[0]}</h2><p>${x[2]||x[1]}</p></article>`).join('')}</section></main>`);
 }
 
+function renderPage(title,sub,kind,items){
+  document.body.dataset.page=kind;
+  const art=kind==='growth'?'assets/growth-signal-flow.webp':null;
+  const bridge=kind==='growth'?`<section class="section growth-bridge"><div class="wrap"><div class="kicker">AI INTERVENTION POINTS</div><h2 class="title">AI 不替你做决定，<br>但会让每一步更有依据。</h2><div class="bridge-grid"><article><b>INPUT / 输入</b><h3>产品、供应链、市场与客户事实</h3><p>把零散资料整理成可以判断的业务上下文。</p></article><article><b>REASON / 判断</b><h3>机会、角色、意图与优先级</h3><p>识别哪些市场、客户和采购角色值得先验证。</p></article><article><b>ACTION / 行动</b><h3>内容、触达、技术确认与跟进</h3><p>让每个线索都有下一步，而不是停在名单里。</p></article></div><a class="btn" href="growth-loop.html">查看完整增长链路 ↗</a></div></section>`:'';
+  shell(`<main><section class="hero"><div class="wrap"><div class="kicker">${kind.toUpperCase()} / HAIBOSS</div><h1>${title}</h1><p>${sub}</p></div></section>${art?`<section class="wrap page-art-wrap"><img class="page-art" src="${art}" alt="${title}视觉插图"></section>`:''}<section class="wrap grid">${items.map(x=>`<article class="card"><b>${x[0]}</b><h2>${x[1]||x[0]}</h2><p>${x[2]||x[1]}</p></article>`).join('')}</section>${bridge}</main>`);
+}
+
 function renderAbout(){
   document.body.dataset.page='about';
   shell(`<main><section class="hero"><div class="wrap"><div class="kicker">ABOUT HAIBOSS</div><h1>海老板，<br><span>让外贸增长更有章法。</span></h1><p>我们关注的不是把 AI 说得多复杂，而是让传统外贸团队真正用得上、跑得动，并在日常工作中看见效率变化。</p></div></section><section class="wrap about-signature"><div><b>HAIBOSS / AI TRADE GROWTH</b><p>把经验变成系统，把线索变成增长。</p></div><img src="assets/haiboss-logo-dark.png" alt="海老板品牌标识"></section><section class="wrap grid"><article class="card"><b>01 / 理念</b><h2>技术服务于业务</h2><p>从真实的产品、市场和客户问题出发，让 AI 进入外贸工作流。</p></article><article class="card"><b>02 / 原则</b><h2>先解决问题，再谈工具</h2><p>不追求堆砌功能，优先找到能降低重复劳动、提升判断和沟通效率的环节。</p></article><article class="card"><b>03 / 方式</b><h2>从小处开始验证</h2><p>从一个品类、一个市场或一个团队切入，逐步建立适合企业自己的方法。</p></article></section></main>`);
@@ -52,6 +59,11 @@ function renderContact(){
 function renderContact(){
   document.body.dataset.page='contact';
   shell(`<main><section class="hero"><div class="wrap"><div class="kicker">TALK TO HAIBOSS</div><h1>聊聊你的外贸增长问题。</h1><p>如果你正在面对客户难找、效率不高、团队经验难沉淀等问题，可以直接联系海老板。</p><a class="phone" href="tel:18805065692">188 0506 5692</a><br><a class="btn" href="tel:18805065692">电话联系海老板 ↗</a></div></section><section class="section contact-panel"><div class="wrap contact-grid"><div><div class="kicker">WECHAT / EMAIL</div><h2 class="title">把问题发过来，<br>我们一起拆解。</h2><p class="desc">微信扫码添加，或发送邮件至 sales@haiboss.top。</p><a class="email-link" href="mailto:sales@haiboss.top">sales@haiboss.top ↗</a></div><div class="wechat-card"><img src="assets/wechat-contact-card.png" alt="微信二维码与企业邮箱 sales@haiboss.top"><p>微信扫码添加 · 商务咨询</p></div></div></section></main>`);
+}
+
+function renderContact(){
+  document.body.dataset.page='contact';
+  shell(`<main><section class="hero"><div class="wrap"><div class="kicker">TALK TO HAIBOSS</div><h1>聊聊你的外贸增长问题。</h1><p>如果你正在面对客户难找、效率不高、团队经验难沉淀等问题，可以直接联系海老板。</p><a class="phone" href="tel:18805065692">188 0506 5692</a><br><a class="btn" href="tel:18805065692">电话联系海老板 ↗</a></div></section><section class="section intake-panel"><div class="wrap intake-grid"><div><div class="kicker">START WITH ONE NODE</div><h2 class="title">先说清楚，<br>你卡在哪一步。</h2><p class="desc">不需要准备复杂方案。告诉海老板你的产品、目标市场和当前最难推进的环节，我们从最值得验证的节点开始。</p></div><div class="intake-list"><div><b>01</b><span>产品与供应链能力</span></div><div><b>02</b><span>目标市场与采购角色</span></div><div><b>03</b><span>内容、询盘或跟进卡点</span></div><div><b>04</b><span>技术确认、报价或复购问题</span></div></div></div></section><section class="section contact-panel"><div class="wrap contact-grid"><div><div class="kicker">WECHAT / EMAIL</div><h2 class="title">把问题发过来，<br>我们一起拆解。</h2><p class="desc">微信扫码添加，或发送邮件至 sales@haiboss.top。</p><a class="email-link" href="mailto:sales@haiboss.top">sales@haiboss.top ↗</a></div><div class="wechat-card"><img src="assets/wechat-contact-card.png" alt="微信二维码与企业邮箱 sales@haiboss.top"><p>微信扫码添加 · 商务咨询</p></div></div></section></main>`);
 }
 
 document.addEventListener('DOMContentLoaded',()=>{const current=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.links a').forEach(a=>{if(a.getAttribute('href')===current)a.classList.add('active')});});
