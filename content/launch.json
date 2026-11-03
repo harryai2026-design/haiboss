@@ -1,0 +1,256 @@
+{
+  "topics": [
+    {
+      "slug": "market-to-customer",
+      "title": "从市场机会到客户开发",
+      "description": "梳理市场、买家画像与企业研究，让第一批客户开发有清楚的起点。"
+    },
+    {
+      "slug": "ai-workflows",
+      "title": "把 AI 放进真实工作流",
+      "description": "从工具能力、证据核查到小范围试跑，判断 AI 如何进入业务。"
+    },
+    {
+      "slug": "content-to-inquiry",
+      "title": "从内容资产到有效咨询",
+      "description": "连接客户问题、内容更新、搜索发现与询盘承接。"
+    }
+  ],
+  "services": [
+    {
+      "slug": "buyer-development",
+      "title": "客户开发与机会验证",
+      "description": "围绕主推产品和目标市场，找到值得进一步判断的海外客户。",
+      "deliverables": "买家画像、来源可追溯的目标名单、背调与优先级、个性化沟通草稿。",
+      "scope": "从一个产品或市场切入；客户事实、渠道边界与交付口径在启动时确认。"
+    },
+    {
+      "slug": "content-growth",
+      "title": "内容与独立站增长",
+      "description": "把产品知识、采购问题和业务经验，整理成持续可用的内容资产。",
+      "deliverables": "站点与内容规划、文章和服务页面、SEO/GEO 基础、询盘承接流程。",
+      "scope": "按业务阶段确定周期和范围，网站上线后继续维护内容和信息。"
+    },
+    {
+      "slug": "ai-workflows",
+      "title": "AI 工作流与团队增效",
+      "description": "找到重复搜索、整理和沟通里的卡点，逐步建立团队能使用的流程。",
+      "deliverables": "单流程试跑、输入输出规范、知识沉淀、权限边界和操作交接。",
+      "scope": "先验证一条真实流程，再决定扩展范围与持续协作方式。"
+    }
+  ],
+  "cases": [
+    {
+      "slug": "annual-export-growth-plan",
+      "kind": "proposal",
+      "title": "技术型 OEM / ODM 企业的年度出海方案",
+      "description": "把独立站、海外内容、大客户研究、社媒与平台运营连接起来，按阶段建立触达和承接流程。",
+      "evidence": "沿用海老板原站的匿名年度服务方案示范。这里说明的是服务设计；未披露客户身份，也不将计划目标表述为已完成的经营成果。"
+    }
+  ],
+  "articles": [
+    {
+      "slug": "market-entry-before-customer-list",
+      "section": "insights",
+      "contentType": "analysis",
+      "featured": true,
+      "title": "进入一个新市场，先确认什么，再开始找客户？",
+      "description": "把市场需求、进入条件与渠道角色分开核对，避免名单很长，业务问题仍然没有答案。",
+      "source": "https://www.trade.gov/country-commercial-guides",
+      "sourceTitle": "International Trade Administration · Country Commercial Guides",
+      "topic": "market-to-customer",
+      "blocks": [
+        [
+          "先建立一张市场判断表",
+          "国家商业指南可作为了解海外经营环境的资料入口。使用时要记住其服务背景与适用对象，再结合你的产品、目的国官方要求和当地渠道交叉核查。资料存在，不代表产品已经符合进入条件。"
+        ],
+        [
+          "海老板建议核对三件事",
+          "第一是产品用于什么场景、由谁采购；第二是规格、认证、售后和交付有哪些待确认条件；第三是进入市场依靠经销商、集成商还是直接销售。先把这些问题写清楚，再扩大搜索。"
+        ],
+        [
+          "从十家样本开始",
+          "选择一个产品与一个市场，找到十家可能相关的企业。逐家记录产品匹配依据、渠道角色、信息来源和下一步问题。这个小样本用于修正画像，不作为市场规模或成交概率证明。"
+        ]
+      ]
+    },
+    {
+      "slug": "export-process-shared-context",
+      "section": "insights",
+      "contentType": "analysis",
+      "title": "出海增长为什么需要一份共同的业务上下文？",
+      "description": "从市场研究到客户沟通，把产品事实、目标客户和交付条件放在同一份可维护记录里。",
+      "source": "https://www.trade.gov/export-solutions",
+      "sourceTitle": "International Trade Administration · Export Solutions",
+      "topic": "market-to-customer",
+      "blocks": [
+        [
+          "先看清资料入口的适用范围",
+          "Trade.gov 的 Export Solutions 提供面向美国出口商的信息与工具。中国企业可将其作为研究框架的参考入口，具体出口和进口要求仍应向对应主管机构核验，不能直接照搬。"
+        ],
+        [
+          "让团队用同一份事实工作",
+          "海老板建议把产品规格、适用场景、供应边界、目标市场和买家类型集中整理。每项重要事实记录负责人和核对时间，销售、内容与 AI 任务从这一份资料取得上下文。"
+        ],
+        [
+          "让反馈回到原记录",
+          "客户提出新的认证、包装、数量或交期问题时，记录它属于通用问题还是个别项目要求。通用事实更新到资料库，个别承诺留在对应项目，避免下一次沟通误用。"
+        ]
+      ]
+    },
+    {
+      "slug": "export-content-as-business-asset",
+      "section": "insights",
+      "contentType": "analysis",
+      "title": "外贸内容的价值，先看它能不能帮助客户判断",
+      "description": "将产品、应用、选型和合作问题讲清楚，再用真实反馈决定下一篇内容。",
+      "source": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "sourceTitle": "Google Search Central · Creating helpful, reliable, people-first content",
+      "topic": "content-to-inquiry",
+      "blocks": [
+        [
+          "从一个采购问题切入",
+          "Google 的内容指导强调以读者需求和可靠信息为中心。放到外贸场景，海老板建议每页先回答一个明确问题：是否适用、如何选择、需要哪些资料，或下一步如何确认。"
+        ],
+        [
+          "把优势换成可核对的说明",
+          "例如定制能力可以说明哪些尺寸可选、什么需要另行评估，以及询价时需要提供什么。无法公开的客户资料不应编成案例，没有记录的性能与销量也不能作为卖点。"
+        ],
+        [
+          "内容更新来自真实沟通",
+          "定期整理客户反复提出的问题，优先修正销售无法直接分享的页面。阅读量是观察指标之一，客户能否提出更明确的需求，同样值得记录。"
+        ]
+      ]
+    },
+    {
+      "slug": "openai-web-search-for-buyer-research",
+      "section": "ai",
+      "contentType": "tool",
+      "featured": true,
+      "title": "AI 联网搜索用于客户背调，关键是留下证据",
+      "description": "以 OpenAI 的联网搜索文档为入口，理解搜索结果、来源引用与业务判断之间的关系。",
+      "source": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "sourceTitle": "OpenAI · Web search tool",
+      "topic": "ai-workflows",
+      "blocks": [
+        [
+          "官方能力说明与本项目实测分开",
+          "OpenAI 文档介绍了联网搜索工具及相关引用输出。本文是工具文档解读，发布日不是工具发布日，也不代表海老板已经接通这一付费接口。实际模型、可用范围与费用应以接入时官方文档和账户为准。"
+        ],
+        [
+          "背调任务应输出事实表",
+          "海老板建议让任务分别记录企业网址、产品相关证据、市场和渠道线索、来源链接及查询时间。无法确认的采购角色标为待核实，不能因为出现姓名就认定其有采购权限。"
+        ],
+        [
+          "先用样本检验质量",
+          "用十家已知企业测试信息准确性、引用是否支撑结论、是否混淆同名公司，以及重复请求成本。业务负责人确认有效后，再决定是否扩大任务范围。"
+        ]
+      ]
+    },
+    {
+      "slug": "claude-search-sources-and-review",
+      "section": "ai",
+      "contentType": "tool",
+      "title": "用 Claude 搜索准备行业简报，怎样减少误读？",
+      "description": "将来源事实、编辑推断和行动建议分开，避免把一段流畅摘要当成已经核实的结论。",
+      "source": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "sourceTitle": "Claude Platform Docs · Web search tool",
+      "topic": "ai-workflows",
+      "blocks": [
+        [
+          "先明确这是一篇工具解读",
+          "Claude 官方文档提供联网搜索工具的使用说明。本文基于文档梳理应用方法，不是新增功能公告，也未提供付费接口实测或效果承诺。"
+        ],
+        [
+          "限制主题，检查原始来源",
+          "海老板建议行业简报先限定国家、产品方向与时间范围。提取结果后打开关键来源，分别确认事件发生日期和文章发布日期，排除旧闻重复、同名企业和多次转载造成的误判。"
+        ],
+        [
+          "给简报留下编辑判断",
+          "最后写清哪些企业可能受影响，判断依赖什么条件，以及读者可以验证的下一步。来源暂时不足时保留待核验状态，避免自动发布没有依据的结论。"
+        ]
+      ]
+    },
+    {
+      "slug": "gemini-grounding-export-information",
+      "section": "ai",
+      "contentType": "tool",
+      "title": "Gemini 的搜索依据，如何用于出海信息整理？",
+      "description": "理解 Grounding 的作用，把可追溯来源作为信息整理流程的一部分。",
+      "source": "https://aistudio.google.com/docs/google-search",
+      "sourceTitle": "Google AI Studio · Grounding with Google Search",
+      "topic": "ai-workflows",
+      "blocks": [
+        [
+          "先理解搜索依据的作用",
+          "Google 文档说明，Grounding with Google Search 可以将模型与实时网页信息连接，并提供可核对的来源引用。这是能力说明，不保证每一项业务判断都准确。本文不涉及收费调用实测。"
+        ],
+        [
+          "把来源与判断分别保存",
+          "海老板建议每条记录保存原网址、核查时间和相关事实，再单独写出对市场、渠道或产品的推断。一个页面可能只证明企业销售某类产品，无法证明它正在采购或愿意合作。"
+        ],
+        [
+          "用一次固定题目比较结果",
+          "先选择一个清楚的问题，用相同时间范围和资料要求整理答案。人工检查引用相关性、覆盖范围和遗漏，再决定是否把工具放进日常更新流程。"
+        ]
+      ]
+    },
+    {
+      "slug": "buyer-research-first-ten-companies",
+      "section": "guides",
+      "contentType": "guide",
+      "featured": true,
+      "title": "第一批海外客户研究：十家公司，跑通一条流程",
+      "description": "从产品事实与买家画像开始，用小样本验证搜索、背调、评分和沟通准备。",
+      "source": "https://www.trade.gov/export-solutions",
+      "sourceTitle": "International Trade Administration · Export Solutions",
+      "topic": "market-to-customer",
+      "blocks": [
+        [
+          "准备输入",
+          "先写清主推产品、实际供应能力、目标国家、适用客户及不适合的类型。新市场不确定时，优先记录要验证的问题。外部出口资源可提供研究入口，具体规则按适用地区重新核查。"
+        ],
+        [
+          "建立十家公司的事实表",
+          "每家企业记录官网、产品相关页面、渠道类型、公开业务联系入口和来源日期。把事实与判断分列，发现重复网站或集团子公司时做关联，而不是计成多个独立机会。"
+        ],
+        [
+          "准备沟通草稿",
+          "先说明为什么与你的产品相关，再提出一个容易回答的业务问题。只使用能够支撑的企业事实和产品优势。正式发送应遵循渠道规则及对应授权，研究完成不等于触达已完成。"
+        ],
+        [
+          "用结果修正画像",
+          "检查哪类企业更匹配，哪些关键词带来无关结果，哪些资料经常缺失。把规则改回正式流程，再开始下一批，不用名单数量替代线索质量。"
+        ]
+      ]
+    },
+    {
+      "slug": "content-update-to-inquiry-checklist",
+      "section": "guides",
+      "contentType": "guide",
+      "title": "从文章更新到咨询接收，一次完整检查怎么做？",
+      "description": "发布、展示、搜索与咨询分别验收，让内容从页面变成能够被使用的入口。",
+      "source": "https://developers.google.com/search/docs/monitor-debug/search-console-start",
+      "sourceTitle": "Google Search Central · How to use Search Console",
+      "topic": "content-to-inquiry",
+      "blocks": [
+        [
+          "先检查文章本身",
+          "确认标题对应正文问题、来源链接有效、事件日期与修订日期清楚。手机上检查字号、段落、目录和链接；技术上确认主要正文能够直接读取，不能只看后台保存成功。"
+        ],
+        [
+          "再检查发现路径",
+          "Google Search Console 可以帮助观察搜索表现和索引相关信息。海老板建议同时核对栏目、相关文章、站点地图与 RSS，确认文章从站内入口可以找到。提交站点地图不等于已收录。"
+        ],
+        [
+          "最后检查咨询",
+          "用明确标记的测试咨询验证必填校验、接收编号、后台记录、重复提交和异常提示。通知邮件另查真实到达情况；队列接收、数据库入库和通知送达应有各自的证据。"
+        ],
+        [
+          "把问题反馈到流程",
+          "若更新文章后列表仍显示旧内容，应检查发布构建和缓存。若咨询返回成功但后台无记录，应检查接收队列和同步，而不是直接要求访客反复提交。"
+        ]
+      ]
+    }
+  ]
+}

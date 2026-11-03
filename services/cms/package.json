@@ -1,0 +1,10 @@
+{
+  "name": "@site/cms", "version": "0.1.0", "private": true, "type": "module",
+  "scripts": {"dev":"next dev","build":"next build","start":"next start","payload":"payload","typecheck":"tsc --noEmit"},
+  "dependencies": {
+    "@payloadcms/db-postgres":"3.85.1", "@payloadcms/next":"3.85.1", "@payloadcms/richtext-lexical":"3.85.1",
+    "@payloadcms/translations":"3.85.1", "@payloadcms/ui":"3.85.1", "payload":"3.85.1",
+    "next":"16.2.6", "react":"19.2.6", "react-dom":"19.2.6", "graphql":"16.14.2", "sharp":"0.34.2", "@site/config":"workspace:*"
+  },
+  "devDependencies": {"@types/node":"22.20.0","@types/react":"19.2.14","@types/react-dom":"19.2.3","typescript":"5.7.3"}
+}

@@ -1,0 +1,18 @@
+{
+  "id": "haiboss",
+  "name": "海老板",
+  "description": "为出海企业提供行业观察、AI 应用指南与增长服务。看懂市场机会，把 AI 用进真实业务。",
+  "tagline": "看懂出海机会，用好 AI。",
+  "defaultLocale": "zh",
+  "locales": ["zh"],
+  "theme": { "accent": "#365314", "background": "#f7f7f2" },
+  "contactEmail": "",
+  "organizationType": "Organization",
+  "features": {
+    "articles": true,
+    "inquiries": true,
+    "products": false,
+    "analytics": false
+  },
+  "analytics": { "ga4MeasurementId": "" }
+}

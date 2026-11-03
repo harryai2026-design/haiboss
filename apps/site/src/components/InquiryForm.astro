@@ -1,0 +1,31 @@
+---
+import { copy } from '../lib/copy'
+const {locale}=Astro.props, t=copy(locale)
+---
+<form id="contact-inquiry" data-api="/api/inquiries/" data-locale={locale} data-sending={t.sending} data-saved={t.saved} data-queued={t.queued} data-failed={t.failed}>
+  <div class="form-grid"><label>{t.name}<input name="name" autocomplete="name" maxlength="120" required /></label><label>{t.email}<input name="email" type="email" autocomplete="email" maxlength="254" required /></label></div>
+  <label>{t.company}<input name="company" autocomplete="organization" maxlength="200" /></label>
+  <label>{t.message}<textarea name="message" rows="5" maxlength="8000" required></textarea></label>
+  <label class="honeypot" aria-hidden="true">Leave empty<input name="hp" tabindex="-1" autocomplete="off" /></label>
+  <p class="muted small">{t.privacy}</p><button type="submit">{t.send} ↗</button><p role="status" aria-live="polite"></p>
+</form>
+<script>
+import { installInquiryTransport } from '../lib/inquiryTransport'
+installInquiryTransport()
+document.querySelectorAll<HTMLFormElement>('form[data-api]').forEach(form=>{
+  const started=Date.now(), button=form.querySelector('button')!, status=form.querySelector('[role=status]')!
+  form.addEventListener('submit',async e=>{
+    e.preventDefault(); if(button.disabled)return
+    button.disabled=true;status.textContent=form.dataset.sending!
+    const values=Object.fromEntries(new FormData(form).entries())
+    try {
+      const response=await (window as any).siteInquiry.send(form,form.dataset.api!,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({...values,type:'contact',locale:form.dataset.locale,source:location.pathname,formStartedAt:started})})
+      const result=await response.json()
+      if(!response.ok || !/^IQ-[0-9A-HJKMNP-TV-Z]{4}-[0-9A-HJKMNP-TV-Z]{4}-[0-9A-HJKMNP-TV-Z]{4}$/.test(result?.doc?.reference || ''))throw new Error('Not acknowledged')
+      ;(window as any).siteInquiry.complete(form,result);form.reset()
+      status.textContent=(result.receiptStatus==='queued'?form.dataset.queued:form.dataset.saved)!+result.doc.reference
+    } catch {status.textContent=form.dataset.failed!}
+    finally {button.disabled=false}
+  })
+})
+</script>

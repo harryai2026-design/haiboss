@@ -1,0 +1,6 @@
+---
+import {sections,types} from '../lib/pages'
+const {item,index=0}=Astro.props
+const date=item.publishedAt?new Date(item.publishedAt).toLocaleDateString('zh-CN',{timeZone:'Asia/Shanghai'}):'编辑精选'
+---
+<article class={`article-card tone-${item.section||'guides'}`}><a class="card-art" href={`/articles/${item.slug}/`} tabindex="-1" aria-hidden="true"><span>{String(index+1).padStart(2,'0')}</span><div>{item.section==='ai'?'AI':item.section==='insights'?'出海':'实战'}<b>↗</b></div><small>HAIBOSS / {types[item.contentType]||'编辑观察'}</small></a><div class="card-meta"><a href={`/${item.section||'guides'}/`}>{sections[item.section]?.title||'实战指南'}</a><span>{types[item.contentType]||'实战指南'}</span></div><h3><a href={`/articles/${item.slug}/`}>{item.title}</a></h3><p>{item.description}</p><div class="card-bottom"><time datetime={item.publishedAt}>{date}</time><a href={`/articles/${item.slug}/`} aria-label={`阅读：${item.title}`}>阅读 ↗</a></div></article>

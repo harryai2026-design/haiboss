@@ -1,0 +1,4 @@
+import {documents} from '@site/content'
+import {site} from '@site/config'
+const escape=(v:string)=>String(v).replace(/[<>&"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]!))
+export async function GET({site:base}){const docs=await documents('articles');return new Response(`<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>海老板内容更新</title><link>${base}</link><description>${escape(site.description)}</description><language>zh-CN</language>${docs.map(x=>`<item><title>${escape(x.title)}</title><description>${escape(x.description)}</description><link>${new URL('/articles/'+x.slug+'/',base)}</link><guid>${new URL('/articles/'+x.slug+'/',base)}</guid>${x.publishedAt?`<pubDate>${new Date(x.publishedAt).toUTCString()}</pubDate>`:''}</item>`).join('')}</channel></rss>`,{headers:{'content-type':'application/rss+xml; charset=utf-8'}})}

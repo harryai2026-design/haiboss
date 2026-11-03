@@ -1,0 +1,34 @@
+{
+  "name": "independent-site-starter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.9.0",
+  "engines": { "node": ">=22.13.0" },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "node --env-file-if-exists=.env scripts/dev.mjs",
+    "stop": "node scripts/stop.mjs",
+    "build": "node --env-file-if-exists=.env scripts/run.mjs site:release",
+    "build:offline": "node --env-file-if-exists=.env scripts/run.mjs site:offline",
+    "build:cms": "node --env-file-if-exists=.env scripts/run.mjs cms:build",
+    "preview": "node --env-file-if-exists=.env scripts/site-server.mjs",
+    "dev:design": "node --env-file-if-exists=.env scripts/run.mjs site:design",
+    "cms:types": "node --env-file-if-exists=.env scripts/run.mjs cms:types",
+    "db:migrate": "node --env-file-if-exists=.env scripts/run.mjs cms:migrate",
+    "db:migrate:create": "node --env-file-if-exists=.env scripts/run.mjs cms:migrate:create",
+    "test": "node --test tests/*.test.mjs",
+    "test:integration": "node --env-file-if-exists=.env --import tsx scripts/verify-integration.ts",
+    "test:matrix": "node --env-file-if-exists=.env scripts/verify-matrix.mjs",
+    "check": "node scripts/check-template.mjs",
+    "package:template": "node scripts/package-template.mjs"
+  },
+  "devDependencies": {
+    "@site/config": "workspace:*",
+    "fflate": "0.8.2",
+    "embedded-postgres": "16.14.0-beta.17",
+    "tsx": "4.22.4",
+    "typescript": "5.7.3",
+    "@types/node": "22.20.0"
+  }
+}
