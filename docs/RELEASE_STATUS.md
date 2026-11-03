@@ -27,7 +27,7 @@
 - haiboss-editorial.service已启用、运行：上海时区工作日08:30采集私有候选，由编辑核验、所有者发布或批准排期，不自动发布未审核材料。
 - Google来源已改为官网提供的FeedBurner RSS。生产实测Google10条、OpenAI20条，新增10、重复20，两个来源均成功；公开文章仍为8篇。付费AI请求为0。
 - haiboss-backup.timer已启用：上海时区每日02:30。实际备份服务运行成功；静态站和耐久询盘接收已解除对数据库服务生命周期的依赖。
-- 最新备份 /home/codexops/backups/haiboss-candidate-20261103T171014Z，隔离端口45233恢复后核对8篇公开文章、1位所有者、正式测试询盘唯一记录通过，未覆盖生产数据库。
+- 上线验收备份 /home/codexops/backups/haiboss-candidate-20261103T171014Z，隔离端口45233恢复后核对8篇公开文章、1位所有者、正式测试询盘唯一记录通过，未覆盖生产数据库。
 - 首份162224Z及最新171014Z备份均已完成Windows离机复制及SHA256核对；这些是本轮实际副本，不是持续离机同步。
 - 原SVG/iArt/自媒体升级前代码、配置、SQLite一致性快照在 /home/codexops/backups/pre-haiboss-upgrade-20261103T140719Z；原媒体原位保留。
 

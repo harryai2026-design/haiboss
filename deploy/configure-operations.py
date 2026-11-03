@@ -4,7 +4,7 @@ if getpass.getuser() != 'codexops': raise SystemExit('Run as the registered code
 from pathlib import Path
 import json,subprocess
 root=Path('/home/codexops/.config/systemd/user');shared=Path('/home/codexops/apps/haiboss/shared')
-for name in ['haiboss-site.service','haiboss-intake.service','haiboss-rebuild.service']:
+for name in ['haiboss-cms.service','haiboss-site.service','haiboss-intake.service','haiboss-rebuild.service','haiboss-editorial.service']:
  f=root/name;text=f.read_text()
  if 'Description=Haiboss ' not in text or 'apps/haiboss/' not in text:raise SystemExit('Unexpected service preserved')
  backup=shared/(name+'.before-db-decoupling')

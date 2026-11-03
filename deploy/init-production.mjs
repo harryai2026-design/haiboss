@@ -37,6 +37,6 @@ const units={
  'haiboss-site.service':prefix+'static site'+after+'ExecStart=/usr/bin/node '+path.join(root,'scripts/site-server.mjs')+'\nMemoryMax=128M\n'+tail,
  'haiboss-editorial.service':prefix+'weekday source collection'+after+'ExecStart=/usr/bin/node '+path.join(root,'scripts/editorial-scheduler.mjs')+'\nMemoryMax=512M\n'+tail
 }
-for(const [name,baseText]of Object.entries(units)){const text=['haiboss-site.service','haiboss-intake.service','haiboss-rebuild.service'].includes(name)?baseText.replace('Requires=haiboss-postgres.service\n',''):baseText;const target=path.join(unitDir,name);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8')!==text)throw new Error('Different existing service preserved: '+name);fs.writeFileSync(target,text,{mode:0o600})}
+for(const [name,baseText]of Object.entries(units)){const text=baseText.replace('Requires=haiboss-postgres.service\n','');const target=path.join(unitDir,name);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8')!==text)throw new Error('Different existing service preserved: '+name);fs.writeFileSync(target,text,{mode:0o600})}
 fs.writeFileSync(shared+'/production-runtime.json',JSON.stringify({release:root,native,envFile,postgres:pgdata,services:Object.keys(units)},null,2),{mode:0o600})
 console.log(JSON.stringify({initialized:true,secretsDisplayed:false,servicesPrepared:Object.keys(units),publicRoutingConfigured:false}))
