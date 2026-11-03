@@ -84,6 +84,7 @@ try{
   assert.equal((await payload.count({collection:'inquiries'})).totalDocs,1)
   const inquiry=(await payload.find({collection:'inquiries'})).docs[0]
   assert.equal(inquiry.status,'new');assert.equal(inquiry.reference,record.reference)
+  assert.equal(inquiry.notification.state,'pending')
   assert.equal((await call({submissionKey:record.key,reference:record.reference,acceptedAt:record.acceptedAt,data:record.body})).status,201)
   assert.equal((await payload.count({collection:'inquiries'})).totalDocs,1)
   await assert.rejects(()=>payload.find({collection:'inquiries',user:editor,overrideAccess:false}))

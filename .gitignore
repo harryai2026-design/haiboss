@@ -13,3 +13,5 @@ media/
 .deploy/
 artifacts/
 *.log
+__pycache__/
+*.pyc
