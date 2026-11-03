@@ -1,10 +1,11 @@
 import http from 'node:http'
+import { isIP } from 'node:net'
 import { pathToFileURL } from 'node:url'
 import { createIntakeQueue } from './queue.mjs'
 import { InquiryError } from './validation.mjs'
 import domains from '../../packages/config/domains.mjs'
 
-export function createIntakeServer({ queue, allowedOrigins = [] }) {
+export function createIntakeServer({ queue, allowedOrigins = [], trustProxy=process.env.TRUST_PROXY==='1', trustCloudflareHeaders=process.env.TRUST_CLOUDFLARE_HEADERS==='1' }) {
   const server = http.createServer(async (req, res) => {
     const route = req.url === '/api/inquiries/' ? '/api/inquiries' : req.url
     if (req.headers.origin && allowedOrigins.includes(req.headers.origin)) {
@@ -40,8 +41,9 @@ export function createIntakeServer({ queue, allowedOrigins = [] }) {
       let input
       try { input = JSON.parse(Buffer.concat(chunks).toString('utf8')) } catch { return json(400, { error: 'Invalid JSON' }) }
       const remote = req.socket.remoteAddress || 'unknown'
-      const trustedProxy = process.env.TRUST_PROXY === '1' && ['127.0.0.1','::1','::ffff:127.0.0.1'].includes(remote)
-      const ip = trustedProxy ? String(req.headers['x-forwarded-for'] || remote).split(',')[0].trim() : remote
+      const trustedProxy = trustProxy && ['127.0.0.1','::1','::ffff:127.0.0.1'].includes(remote)
+      const cloudflareIP=String(req.headers['cf-connecting-ip']||'').trim()
+      const ip = trustedProxy ? (trustCloudflareHeaders ? (isIP(cloudflareIP)?cloudflareIP:remote) : String(req.headers['x-forwarded-for'] || remote).split(',')[0].trim()) : remote
       const record = queue.accept(input, ip)
       // For catalogue requests allow a short healthy-backend fast path. Receipt is already durable.
       if (record.body?.type === 'catalog' && record.status === 'pending') {

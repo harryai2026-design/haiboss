@@ -1,4 +1,4 @@
 [
-  {"id":"google-search-central","title":"Google Search Central","url":"https://developers.google.com/search/blog/feeds/posts/default?alt=rss","enabled":true,"section":"insights"},
+  {"id":"google-search-central","title":"Google Search Central","url":"https://feeds.feedburner.com/blogspot/amDG","enabled":true,"section":"insights"},
   {"id":"openai-news","title":"OpenAI News","url":"https://openai.com/news/rss.xml","enabled":true,"section":"ai"}
 ]

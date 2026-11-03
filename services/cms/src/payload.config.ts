@@ -30,7 +30,7 @@ export default buildConfig({
   secret:process.env.PAYLOAD_SECRET,
   admin:{user:'users',importMap:{baseDir:dirname}},
   i18n:{supportedLanguages:{zh},fallbackLanguage:'zh'},
-  localization:{locales:site.locales,defaultLocale:site.defaultLocale,fallback:false},
+  localization:{locales:site.locales,defaultLocale:site.defaultLocale,fallback:site.locales.length===1},
   collections:[Users,Media,ReleaseJobs,Topics,Services,Cases,Candidates,...(site.features.articles || allModules ? [Articles] : []),...(site.features.products || allModules ? [Products] : []),...(site.features.inquiries || allModules ? [Inquiries] : [])],
   globals:[SiteProfile],endpoints:[health,...(site.features.inquiries ? [inquiryEndpoint] : [])],
   editor:lexicalEditor(),sharp,

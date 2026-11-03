@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { owner, ownerField } from '../lib/access'
 export const Users: CollectionConfig = {
-  slug:'users', auth:true,
+  slug:'users', auth:{cookies:{secure:process.env.SITE_ENVIRONMENT==='production',sameSite:'Lax'}},
   admin:{useAsTitle:'email',group:'系统'},
   access:{create:owner,delete:owner,read:({req}) => req.user?.role === 'owner' ? true : req.user ? {id:{equals:req.user.id}} : false,update:({req}) => req.user?.role === 'owner' ? true : req.user ? {id:{equals:req.user.id}} : false},
   hooks:{beforeChange:[async ({data,operation,req}) => {

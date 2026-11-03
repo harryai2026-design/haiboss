@@ -14,7 +14,7 @@ const native=path.join(path.dirname(path.dirname(req.resolve('@embedded-postgres
 for(const name of ['postgres','initdb','pg_ctl'])fs.chmodSync(path.join(native,name),0o750)
 if(!fs.existsSync(envFile)){
  const pw=randomBytes(24).toString('hex')
- const env={SITE_URL:'https://haiboss.com',CMS_URL:'https://cms.haiboss.com',SITE_ENVIRONMENT:'production',PAYLOAD_URL:'http://127.0.0.1:45201',SITE_PORT:'45221',CMS_PORT:'45201',INTAKE_PORT:'45202',REBUILD_PORT:'45203',PG_PORT:'45232',DATABASE_URI:'postgresql://haiboss:'+pw+'@127.0.0.1:45232/haiboss',PG_PASSWORD:pw,PAYLOAD_SECRET:randomBytes(32).toString('hex'),INQUIRY_INGEST_SECRET:randomBytes(32).toString('hex'),REBUILD_SECRET:randomBytes(32).toString('hex'),STRICT_CONTENT_BUILD:'1',BUILD_HOOK_URL:'http://127.0.0.1:45203/rebuild',INTAKE_DIR:shared+'/inquiries',PAYLOAD_PUSH:'0',NODE_ENV:'production',OWNER_EMAIL:'harryai2026@gmail.com',OWNER_BOOTSTRAP_FILE:privateDir+'/owner-bootstrap.json'}
+ const env={SITE_URL:'https://haiboss.com',CMS_URL:'https://cms.haiboss.com',SITE_ENVIRONMENT:'production',PAYLOAD_URL:'http://127.0.0.1:45201',SITE_PORT:'45221',CMS_PORT:'45201',INTAKE_PORT:'45202',REBUILD_PORT:'45203',PG_PORT:'45232',DATABASE_URI:'postgresql://haiboss:'+pw+'@127.0.0.1:45232/haiboss',PG_PASSWORD:pw,PAYLOAD_SECRET:randomBytes(32).toString('hex'),INQUIRY_INGEST_SECRET:randomBytes(32).toString('hex'),REBUILD_SECRET:randomBytes(32).toString('hex'),STRICT_CONTENT_BUILD:'1',BUILD_HOOK_URL:'http://127.0.0.1:45203/rebuild',INTAKE_DIR:shared+'/inquiries',PAYLOAD_PUSH:'0',NODE_ENV:'production',OWNER_EMAIL:'harryai2026@gmail.com',OWNER_BOOTSTRAP_FILE:privateDir+'/owner-bootstrap.json',TRUST_PROXY:'1',TRUST_CLOUDFLARE_HEADERS:'1',SITE_REDIRECT_ORIGINS:'https://www.haiboss.com,https://haiboss.top,https://www.haiboss.top'}
  fs.writeFileSync(envFile,Object.entries(env).map(([k,v])=>k+'='+v).join('\n')+'\n',{flag:'wx',mode:0o600})
 }
 process.loadEnvFile(envFile)
@@ -37,6 +37,6 @@ const units={
  'haiboss-site.service':prefix+'static site'+after+'ExecStart=/usr/bin/node '+path.join(root,'scripts/site-server.mjs')+'\nMemoryMax=128M\n'+tail,
  'haiboss-editorial.service':prefix+'weekday source collection'+after+'ExecStart=/usr/bin/node '+path.join(root,'scripts/editorial-scheduler.mjs')+'\nMemoryMax=512M\n'+tail
 }
-for(const [name,text]of Object.entries(units)){const target=path.join(unitDir,name);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8')!==text)throw new Error('Different existing service preserved: '+name);fs.writeFileSync(target,text,{mode:0o600})}
+for(const [name,baseText]of Object.entries(units)){const text=['haiboss-site.service','haiboss-intake.service','haiboss-rebuild.service'].includes(name)?baseText.replace('Requires=haiboss-postgres.service\n',''):baseText;const target=path.join(unitDir,name);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8')!==text)throw new Error('Different existing service preserved: '+name);fs.writeFileSync(target,text,{mode:0o600})}
 fs.writeFileSync(shared+'/production-runtime.json',JSON.stringify({release:root,native,envFile,postgres:pgdata,services:Object.keys(units)},null,2),{mode:0o600})
 console.log(JSON.stringify({initialized:true,secretsDisplayed:false,servicesPrepared:Object.keys(units),publicRoutingConfigured:false}))

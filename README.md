@@ -2,6 +2,8 @@
 
 Astro 静态前台 + Payload 3 + 独立 PostgreSQL，复用 independent-site-starter。保留增长服务，增加出海情报、AI 动态、实战指南、专题、内容搜索、RSS 和可靠咨询接收。
 
+新版正式站：https://haiboss.com/ ；生产后台：https://cms.haiboss.com/admin 。内容运营见 docs/内容运营与日常维护.md，验收与待接入能力见 docs/RELEASE_STATUS.md，回滚见 docs/生产切换与回滚.md。
+
 ## 本地启动
 
 使用 Node 24 LTS、pnpm，按锁文件安装后执行 pnpm setup、pnpm dev。

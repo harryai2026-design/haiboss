@@ -5,10 +5,12 @@ set -eu
 ROOT=/home/codexops/apps/haiboss/releases/20261103-content-v1
 exec systemd-run --user --unit=haiboss-cms-build --collect \
   --property=WorkingDirectory="$ROOT" \
-  --property=MemoryMax=1200M --property=MemoryHigh=900M \
+  --property=MemoryMax=1200M --property=MemoryHigh=1100M \
   --property=CPUQuota=80% --property=TasksMax=64 \
   --property=OOMPolicy=stop --property=KillMode=control-group \
-  --property=TimeoutStartSec=900 \
+  --property=RuntimeMaxSec=900 \
+  --property=StandardOutput=append:/home/codexops/apps/haiboss/shared/logs/cms-build.log \
+  --property=StandardError=append:/home/codexops/apps/haiboss/shared/logs/cms-build.log \
   --setenv=NODE_OPTIONS=--max-old-space-size=512 \
   --setenv=NEXT_TELEMETRY_DISABLED=1 \
   /usr/bin/node --env-file=.env scripts/run.mjs cms:build

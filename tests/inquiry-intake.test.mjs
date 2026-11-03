@@ -93,3 +93,22 @@ test('HTTP intake remains available during backend outage and exposes no receipt
   assert.equal(health.pending, 1); assert.equal(health.lastDelivery.ok, false)
   assert.ok(!JSON.stringify(health).includes('buyer'))
 })
+
+test('trusted Cloudflare ingress separates real visitors without accepting forged forwarded addresses', async t => {
+  async function open(trusted) {
+    const {queue}=fixture(t)
+    const server=createIntakeServer({queue,trustProxy:trusted,trustCloudflareHeaders:trusted})
+    await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve))
+    t.after(()=>new Promise(resolve=>server.close(resolve)))
+    return (cf,forwarded)=>fetch(`http://127.0.0.1:${server.address().port}/api/inquiries`,{method:'POST',headers:{'content-type':'application/json','cf-connecting-ip':cf,'x-forwarded-for':forwarded},body:JSON.stringify(input())})
+  }
+  const untrusted=await open(false)
+  for(let i=0;i<5;i++)assert.equal((await untrusted('203.0.113.'+(i+1),'198.51.100.'+(i+1))).status,202)
+  assert.equal((await untrusted('203.0.113.99','198.51.100.99')).status,429)
+  const trusted=await open(true)
+  for(let i=0;i<5;i++)assert.equal((await trusted('203.0.113.1','198.51.100.'+(i+1))).status,202)
+  assert.equal((await trusted('203.0.113.1','198.51.100.99')).status,429)
+  assert.equal((await trusted('203.0.113.2','198.51.100.99')).status,202)
+  for(let i=0;i<5;i++)assert.equal((await trusted('invalid','198.51.100.'+(i+1))).status,202)
+  assert.equal((await trusted('invalid','198.51.100.99')).status,429)
+})
