@@ -1,0 +1,26 @@
+---
+const {compact=false}=Astro.props
+const scenarios=[
+ {name:'客户研究',input:'产品资料 ＋ 目标市场',steps:['建立买家画像','核对企业与来源','整理优先级与待确认项'],output:'有依据的目标客户研究表',check:'企业是否真实、产品是否相关、信息是否仍然有效。'},
+ {name:'内容生产',input:'产品事实 ＋ 买家问题',steps:['找到问题与选题','组织有来源的内容','审核后进入发布流程'],output:'可复用的文章与沟通素材',check:'产品参数、来源、版权与承诺必须人工核对。'},
+ {name:'团队协作',input:'一条重复工作 ＋ 现有规范',steps:['明确输入和责任人','让 AI 准备初步结果','确认结果并保留过程'],output:'可以交接的任务与操作说明',check:'保留人工确认、访问权限和失败后的处理办法。'},
+]
+---
+<section class:list={['workflow-demo',{'workflow-compact':compact}]} data-workflow>
+ <div class="workflow-intro"><span class="eyebrow">AI / IN THE WORKFLOW</span><h2>不只看 AI 的能力，<br/>看它接住哪一步工作。</h2><p>选一个场景，看看资料如何经过研究、核对，成为可继续使用的结果。</p></div>
+ <div class="workflow-console">
+  <div class="console-top"><span><i></i> 工作流演示</span><small>METHOD / NOT LIVE DATA</small></div>
+  <div class="scenario-tabs" role="group" aria-label="选择工作流场景">{scenarios.map((s,i)=><button type="button" data-scenario={i} aria-pressed={i===0?'true':'false'}>{s.name}</button>)}</div>
+  {scenarios.map((s,i)=><div class="scenario-panel" data-panel={i} hidden={i!==0}><div class="workflow-input"><span>INPUT / 输入</span><strong>{s.input}</strong></div><ol class="workflow-stages">{s.steps.map((step,j)=><li><span>0{j+1}</span><strong>{step}</strong><i aria-hidden="true">↓</i></li>)}</ol><div class="workflow-output"><span>OUTPUT / 输出</span><strong>{s.output}</strong><span aria-hidden="true">↗</span></div><p class="human-check"><b>人工核对</b> {s.check}</p></div>)}
+  <p class="demo-disclosure">场景演示不调用模型、不上传资料；实际合作先确认任务范围与验收方式。</p>
+ </div>
+</section>
+<script>
+ document.querySelectorAll('[data-workflow]').forEach(root=>{
+  const buttons=root.querySelectorAll<HTMLButtonElement>('[data-scenario]')
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+   buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)))
+   root.querySelectorAll<HTMLElement>('[data-panel]').forEach(panel=>{panel.hidden=panel.dataset.panel!==button.dataset.scenario})
+  }))
+ })
+</script>

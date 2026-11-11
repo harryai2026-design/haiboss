@@ -3,9 +3,10 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {createRequire} from 'node:module'
 import {root,site} from '@site/config'
+import {byteRange} from '../services/static/byte-range.mjs'
 const require=createRequire(import.meta.url),{active}=require('../services/rebuild/publish.cjs')
 const app=path.join(root,'apps/site')
-const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.txt':'text/plain; charset=utf-8','.xml':'application/xml; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.woff2':'font/woff2'}
+const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.txt':'text/plain; charset=utf-8','.xml':'application/xml; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.woff2':'font/woff2','.mp4':'video/mp4','.vtt':'text/vtt; charset=utf-8'}
 const canonical=new URL(process.env.SITE_URL||'http://localhost:44321')
 const redirectHosts=new Set((process.env.SITE_REDIRECT_ORIGINS||'').split(',').filter(Boolean).map(value=>new URL(value).host))
 const server=http.createServer(async(req,res)=>{
@@ -36,9 +37,17 @@ const server=http.createServer(async(req,res)=>{
     const real=await fs.promises.realpath(file),realRoot=await fs.promises.realpath(directory)
     if(!real.startsWith(realRoot+path.sep))return fail(404)
     const size=(await fs.promises.stat(real)).size
-    res.writeHead(200,{'content-type':mime[path.extname(file)]||'application/octet-stream','content-length':size,'x-content-type-options':'nosniff','cache-control':pathname.startsWith('/_astro/')?'public,max-age=31536000,immutable':'no-cache'})
-    if(req.method==='HEAD')res.end();else fs.createReadStream(real).pipe(res)
-  }catch{fail(404)}
+    const range=byteRange(typeof req.headers.range==='string'?req.headers.range:undefined,size)
+    if(range===null){res.writeHead(416,{'content-range':`bytes */${size}`,'accept-ranges':'bytes','content-length':'0'});res.end();return}
+    const headers={'content-type':mime[path.extname(file)]||'application/octet-stream','content-length':range?range.end-range.start+1:size,'accept-ranges':'bytes','x-content-type-options':'nosniff','cache-control':pathname.startsWith('/_astro/')?'public,max-age=31536000,immutable':'no-cache',...(range?{'content-range':`bytes ${range.start}-${range.end}/${size}`}:{})}
+    res.writeHead(range?206:200,headers)
+    if(req.method==='HEAD')res.end();else fs.createReadStream(real,range||{}).on('error',()=>res.destroy()).pipe(res)
+  }catch(error){
+    if(error.code==='ENOENT'){
+      try{const fallback=path.join(active(app),'404.html'),body=await fs.promises.readFile(fallback);res.writeHead(404,{'content-type':'text/html; charset=utf-8','content-length':body.length,'cache-control':'no-store','x-content-type-options':'nosniff'});res.end(req.method==='HEAD'?undefined:body);return}catch{}
+    }
+    fail(404)
+  }
 })
 server.listen(Number(process.env.SITE_PORT||44321),'127.0.0.1',()=>console.log(`Static site: ${process.env.SITE_URL||'http://localhost:44321'}`))
 process.on('SIGTERM',()=>server.close(()=>process.exit(0)))

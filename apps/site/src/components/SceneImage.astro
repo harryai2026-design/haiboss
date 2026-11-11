@@ -1,0 +1,9 @@
+---
+import {sceneArt} from '../lib/visuals'
+const {scene='insights',eager=false,class:className='',caption=true}=Astro.props
+const art=sceneArt[scene]||sceneArt.insights
+---
+<figure class:list={['scene-image',className]}>
+ <img src={art.src} alt={art.alt} width="1600" height="914" loading={eager?'eager':'lazy'} decoding="async" fetchpriority={eager?'high':'auto'}/>
+ {caption&&<figcaption>{art.label}</figcaption>}
+</figure>

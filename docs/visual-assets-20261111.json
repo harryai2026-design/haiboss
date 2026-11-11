@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-11",
+  "tool": "built-in image_gen",
+  "usage": "Editorial AI scene illustrations; not actual customers, facilities, team or results.",
+  "assets": [
+    {
+      "name": "global-trade",
+      "source": "C:/Users/Administrator/.codex/generated_images/01a1a166-32bd-7e90-b1e4-8c8979ce7383/exec-71ab9bf3-ad40-499f-848f-316acf80ab67.png",
+      "path": "apps/site/public/assets/editorial/global-trade.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium editorial website wide hero image, 16:9 landscape. Create an exceptionally beautiful realistic cinematic aerial view of a modern international container port meeting the sea at blue hour, stacked muted forest-green and light cream shipping containers, a few lime-yellow gantry cranes, deep teal sea with a single large container ship traveling diagonally. Subtle thin luminous chartreuse signal lines connect the dock and ship, suggesting AI-enabled global trade, sophisticated restrained future technology. Photography quality and tactile detail, architectural clarity, atmospheric light, no garish neon. Palette dark forest #17201c, warm off-white #f7f7f2, chartreuse #d8ff3e with a tiny warm peach highlight. Strong diagonal composition across full frame, generous dark sky/sea negative space in upper left, no text no letters no logos no watermark no invented charts. This is a clearly labeled AI conceptual editorial image, not a customer facility. Render 1792x1024 or similar landscape.",
+      "width": 1600,
+      "height": 914,
+      "bytes": 180936,
+      "sha256": "a06000aa3ed64e0e328670509ad8979704fa2f93f9be8b910d8e64a2fee4fd69"
+    },
+    {
+      "name": "ai-network",
+      "source": "C:/Users/Administrator/.codex/generated_images/01a1a166-32bd-7e90-b1e4-8c8979ce7383/exec-eeabade6-fe18-4b7e-bfce-075535e95c22.png",
+      "path": "apps/site/public/assets/editorial/ai-network.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium editorial image for a Chinese AI business intelligence website, wide landscape 16:9. A beautifully crafted translucent frosted-glass and brushed-aluminum neural sphere suspended above a dark forest-green circular plinth, precise lime-green light trails organically orbiting it and connecting tiny matte ivory modular blocks; a few tiny orange accents. Editorial architectural studio photography, tangible physical materials, subtle translucent shadows, refined technology illustration not a game screen. Warm light beige backdrop fading into deep forest on right, green #17201c and vivid chartreuse #d8ff3e. Off-center sculpture with spacious asymmetrical framing. AI connecting business information into an actionable workflow. No text no letters no brand no watermark no fake UI no charts. Render high resolution landscape. Labeled as AI concept art in website.",
+      "width": 1600,
+      "height": 900,
+      "bytes": 76272,
+      "sha256": "d08eb4383a8eaec577a95e64aeeff04e01cf3d87679791c727b210e6ffa6c3ad"
+    },
+    {
+      "name": "research-desk",
+      "source": "C:/Users/Administrator/.codex/generated_images/01a1a166-32bd-7e90-b1e4-8c8979ce7383/exec-3a2d9993-034d-43b5-87b4-995ed9dde98f.png",
+      "path": "apps/site/public/assets/editorial/research-desk.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: wide editorial cover for Chinese overseas B2B business practical field guides, 16:9. Beautiful overhead still life of a working business research desk: warm off-white paper sheets with understated pencil lines and abstract tiny diagrams (no legible text), a silver open laptop only partly visible at top right, one sophisticated lime-green translucent glass block, black pen, matte forest-green notebook, a small neutral ceramic espresso cup. Daylight from left, authentic tactile paper grain, refined architectural magazine photography. Plenty of breathing room, composition consistent with muted cream #f7f7f2 and forest #17201c and chartreuse #d8ff3e website. No people, no hands, no company logos, no large lettering, no watermark, no fake measurable business performance. This image is AI-generated scene illustration and will be labeled accordingly. Detailed high resolution landscape.",
+      "width": 1600,
+      "height": 900,
+      "bytes": 161676,
+      "sha256": "0f19a906934e98ad0ee04c2ae01d0a944ee4ccc0c14ad506e8a06e4b7d9d3f36"
+    }
+  ]
+}
