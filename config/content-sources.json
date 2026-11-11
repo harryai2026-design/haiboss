@@ -1,4 +1,6 @@
 [
-  {"id":"google-search-central","title":"Google Search Central","url":"https://feeds.feedburner.com/blogspot/amDG","enabled":true,"section":"insights"},
-  {"id":"openai-news","title":"OpenAI News","url":"https://openai.com/news/rss.xml","enabled":true,"section":"ai"}
+  {"id":"google-search-central","title":"Google Search Central","url":"https://feeds.feedburner.com/blogspot/amDG","enabled":true,"section":"insights","allowedHosts":["developers.google.com"],"maxEntries":20},
+  {"id":"openai-news","title":"OpenAI News","url":"https://openai.com/news/rss.xml","enabled":true,"section":"ai","allowedHosts":["openai.com"],"maxEntries":40},
+  {"id":"wto-news","title":"WTO news","url":"https://www.wto.org/library/rss/latest_news_e.xml","enabled":true,"section":"insights","allowedHosts":["www.wto.org","wto.org"],"maxEntries":30},
+  {"id":"google-ai","title":"Google AI / The Keyword","url":"https://blog.google/innovation-and-ai/technology/ai/rss/","enabled":true,"section":"ai","allowedHosts":["blog.google"],"maxEntries":30}
 ]

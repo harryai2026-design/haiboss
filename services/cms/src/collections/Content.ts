@@ -1,12 +1,14 @@
 import type { CollectionConfig, GlobalConfig } from 'payload'
 import { editor, publicContent, owner } from '../lib/access'
 import { changed, deleted } from '../lib/publication'
+import {editorialIssues} from '../../../editorial/review.mjs'
 const slugField = {name:'slug',type:'text' as const,required:true,unique:true,index:true,label:'链接标识',validate:(value:any) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value || '') && value.length < 120 || '使用小写英文、数字和短横线'}
 export const Articles: CollectionConfig = {
-  slug:'articles',labels:{singular:'文章',plural:'文章'},admin:{useAsTitle:'title',group:'内容'},
+  slug:'articles',labels:{singular:'文章',plural:'文章'},admin:{useAsTitle:'title',group:'内容',defaultColumns:['title','section','_status','reviewApproved','scheduledAt','updatedAt']},
   access:{read:publicContent,create:editor,update:editor,delete:editor},versions:{drafts:true},
-  hooks:{beforeChange:[({data,req})=>{
+  hooks:{beforeChange:[({data,req,originalDoc})=>{
     if(req.user&&req.user.role!=='owner'&&(data?._status==='published'||data?.reviewApproved===true))throw new Error('Publishing requires the site owner; save a draft for review')
+    if(data?._status==='published'||data?.reviewApproved===true){const issues=editorialIssues({...originalDoc,...data});if(issues.length)throw new Error('内容未达到待发布要求：'+issues.join('；'))}
     return data
   }],afterChange:[changed],afterDelete:[deleted]},
   fields:[slugField,{name:'title',type:'text',localized:true,required:true,label:'标题'},{name:'description',type:'textarea',localized:true,required:true,label:'摘要 / SEO 描述'},
@@ -18,9 +20,9 @@ export const Articles: CollectionConfig = {
     {name:'topics',type:'relationship',relationTo:'topics',hasMany:true,label:'关联专题'},
     {name:'sources',type:'array',label:'原始来源',fields:[{name:'title',type:'text',required:true},{name:'url',type:'text',required:true,validate:(v:any)=>{try{return new URL(v).protocol==='https:'||'来源须为 HTTPS'}catch{return '来源网址无效'}}},{name:'checkedAt',type:'date',label:'核查日期'}]},
     {name:'eventDate',type:'date',label:'事件日期（仅有明确事件时填写）'},
-    {name:'scheduledAt',type:'date',label:'预约发布时间',access:{create:({req})=>req.user?.role==='owner',update:({req})=>req.user?.role==='owner'}},
-    {name:'reviewApproved',type:'checkbox',defaultValue:false,label:'已审核，可按排期发布',access:{create:({req})=>req.user?.role==='owner',update:({req})=>req.user?.role==='owner'}},
-    {name:'reviewNotes',type:'textarea',label:'内部核验记录',access:{read:({req})=>Boolean(req.user)}},
+    {name:'scheduledAt',type:'date',label:'预约发布时间',admin:{description:'可选。审核通过后，到此时间自动发布；不填则审核保存后约30秒内发布。'},access:{create:({req})=>req.user?.role==='owner',update:({req})=>req.user?.role==='owner'}},
+    {name:'reviewApproved',type:'checkbox',defaultValue:false,label:'我已审核，允许发布',admin:{description:'仅所有者可确认。请先核对正文、原始来源、日期和业务判断，确认后保存草稿。没有勾选时系统不会自动发布。'},access:{create:({req})=>req.user?.role==='owner',update:({req})=>req.user?.role==='owner'}},
+    {name:'reviewNotes',type:'textarea',label:'内部核验记录',admin:{description:'内部记录不公开；自动稿记录来源、整理状态与候选编号。这里的“ready”仅表示整理完成，不代表你已批准发布。'},access:{read:({req})=>Boolean(req.user)}},
   ],
 }
 export const Products: CollectionConfig = {

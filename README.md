@@ -13,7 +13,7 @@ Astro 静态前台 + Payload 3 + 独立 PostgreSQL，复用 independent-site-sta
 
 ## 内容与发布
 
-文章包含栏目、类型、专题、来源、日期、精选、内部核验记录和预约发布。编辑准备草稿，所有者发布或批准排期。草稿、内部记录不进入公开接口、搜索、RSS 或静态页面。
+文章包含栏目、类型、专题、来源、日期、精选、内部核验记录和预约发布。按2026-11-11用户最新授权，Agent整理草稿后另行核查原文与CMS实际稿件，通过带内容指纹的独立审核命令批准，服务器完成发布；存疑稿保持草稿。所有者可继续修改、人工批准或撤稿。草稿、内部记录不进入公开接口、搜索、RSS 或静态页面。
 发布产生持久任务：重建→链接/SEO 审计→静态版本切换；失败保留旧版。预约发布只处理已审核且时间已到的草稿。代码回退不自动回退数据库。
 content/launch.json 仅为首批内容导入材料；正常内容以 CMS 为准。导入脚本按 slug 只插入缺失项，不覆盖后续编辑。
 
@@ -22,7 +22,7 @@ content/launch.json 仅为首批内容导入材料；正常内容以 CMS 为准�
 - node --env-file=.env --import tsx scripts/collect-content.ts
 - node --env-file=.env --import tsx scripts/draft-candidate.ts <候选编号>
 
-来源配置为 config/content-sources.json。采集只保存去重后的私有候选，转为待核验草稿后仍需编辑。定时脚本按上海时区工作日 08:30 运行一次，记录保存在 .local/editorial。未接付费 AI 生成供应商。
+来源配置为 config/content-sources.json，审核与数量限制在 config/editorial-policy.json。VPS工作日08:30采集去重候选，Codex工作日09:00整理、独立审核并跟进正式上线，每次及每日最多3篇；后者需要当前Windows开机。记录保存在 .local/editorial。未接付费 AI 生成供应商。完整操作和失败恢复见 [内容运营与日常维护](docs/内容运营与日常维护.md)。
 
 ## 咨询与通知
 

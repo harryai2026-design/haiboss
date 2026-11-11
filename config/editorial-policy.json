@@ -1,0 +1,8 @@
+{
+  "version": "2026-11-11",
+  "timezone": "Asia/Shanghai",
+  "collection": {"weekdaysOnly":true,"hour":8,"minute":30,"retryMinutes":[15,60,180],"staleRunMinutes":12,"maxRunMinutes":8,"maxSourceAgeDays":45},
+  "drafting": {"maxDraftsPerRun":3,"maxAwaitingOwnerReview":12,"preferredSections":["insights","ai"],"ownerApprovalRequired":false,"runner":"Codex local heartbeat; computer must be awake"},
+  "review": {"mode":"delegated-agent","authorizedByUserOn":"2026-11-11","requiredChecks":["primarySources","dates","claims","businessRelevance","rights","privacy"],"failAction":"keep draft with review reasons"},
+  "publication": {"maxPerDay":3,"pollSeconds":30,"approvedWithoutSchedule":"publish on next poll","unapproved":"always remain draft"}
+}

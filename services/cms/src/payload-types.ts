@@ -248,6 +248,8 @@ export interface Case {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * 自动采集的资料入口。整理后的中文稿在“内容 → 文章”审核；只有你确认后才会发布。
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "content-candidates".
  */
@@ -303,8 +305,17 @@ export interface Article {
       }[]
     | null;
   eventDate?: string | null;
+  /**
+   * 可选。审核通过后，到此时间自动发布；不填则审核保存后约30秒内发布。
+   */
   scheduledAt?: string | null;
+  /**
+   * 仅所有者可确认。请先核对正文、原始来源、日期和业务判断，确认后保存草稿。没有勾选时系统不会自动发布。
+   */
   reviewApproved?: boolean | null;
+  /**
+   * 内部记录不公开；自动稿记录来源、整理状态与候选编号。这里的“ready”仅表示整理完成，不代表你已批准发布。
+   */
   reviewNotes?: string | null;
   updatedAt: string;
   createdAt: string;
